@@ -1,21 +1,25 @@
-import { Game as MainGame } from './scenes/Game';
+import { Exterior } from './scenes/Exterior';
 import { AUTO, Game, Scale,Types } from 'phaser';
 
 // Find out more information about the Game Config at:
 // https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
 const config: Types.Core.GameConfig = {
     type: AUTO,
-    width: 1024,
-    height: 768,
+    width: 480,
+    height: 432,
     parent: 'game-container',
-    backgroundColor: '#028af8',
+    backgroundColor: '#9bbc0f',
     scale: {
         mode: Scale.FIT,
         autoCenter: Scale.CENTER_BOTH
     },
     scene: [
-        MainGame
-    ]
+        Exterior
+    ],
+    physics: {
+        default: 'arcade',
+        arcade: { debug: false }
+    },
 };
 
 const StartGame = (parent: string) => {
