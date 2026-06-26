@@ -23,6 +23,16 @@ export class Exterior extends Scene
 
         // Touches directionnelles
         this.cursors = this.input.keyboard!.createCursorKeys();
+
+        // Maison Gauche
+        const houseL = this.add.rectangle(100, 216, 80, 80, 0xd040000);
+        this.physics.add.existing(houseL, true);
+        this.physics.add.collider(this.player, houseL);
+
+        //Maison Droite
+        const houseR = this.add.rectangle(380, 216, 80, 80, 0x0040d0);
+        this.physics.add.existing(houseR, true);
+        this.physics.add.collider(this.player, houseR);
     }
 
     update ()
