@@ -33,6 +33,20 @@ export class Exterior extends Scene
         const houseR = this.add.rectangle(380, 216, 80, 80, 0x0040d0);
         this.physics.add.existing(houseR, true);
         this.physics.add.collider(this.player, houseR);
+
+        //Zone de transition maison gauche (devant la porte)
+        const doorL = this.add.rectangle(100, 260, 20, 10, 0xffff00);
+        this.physics.add.existing(doorL, true);
+        this.physics.add.overlap(this.player, doorL, () => {
+            this.scene.start('HouseL');
+        });
+
+        //Zone de transition maison droite (devant la porte)
+        const doorR = this.add.rectangle(380, 260, 20, 10, 0xffff00);
+        this.physics.add.existing(doorR, true);
+        this.physics.add.overlap(this.player, doorR, () => {
+            this.scene.start('HouseR');
+        });
     }
 
     update ()

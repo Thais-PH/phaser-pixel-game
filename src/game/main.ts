@@ -1,4 +1,6 @@
 import { Exterior } from './scenes/Exterior';
+import { HouseL } from './scenes/HouseL';
+import { HouseR } from './scenes/HouseR';
 import { AUTO, Game, Scale,Types } from 'phaser';
 
 // Find out more information about the Game Config at:
@@ -14,7 +16,9 @@ const config: Types.Core.GameConfig = {
         autoCenter: Scale.CENTER_BOTH
     },
     scene: [
-        Exterior
+        Exterior,
+        HouseL,
+        HouseR,
     ],
     physics: {
         default: 'arcade',
