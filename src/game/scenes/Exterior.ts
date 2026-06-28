@@ -35,6 +35,42 @@ export class Exterior extends Phaser.Scene
         this.physics.add.existing(this.player);
 
         this.cursors = this.input.keyboard!.createCursorKeys();
+
+        const collisionLayer = map.getObjectLayer('collisions');
+
+        const walls = this.physics.add.staticGroup();
+
+        collisionLayer?.objects.forEach(obj => {
+            if (obj.name === 'wallL' || obj.name === 'wallR') {
+                const wall = this.add.rectangle(
+                    obj.x! + obj.width! / 2,
+                    obj.y! + obj.height! / 2,
+                    obj.width!,
+                    obj.height!,
+                    0x000000,
+                    0
+                );
+                this.physics.add.existing(wall, true);
+                walls.add(wall);
+            }
+
+            if (obj.name === 'doorL' || obj.name === 'doorR') {
+                const door = this.add.rectangle(
+                    obj.x! + obj.width! / 2,
+                    obj.y! + obj.height! / 2 ,
+                    obj.width!,
+                    obj.height!,
+                    0x000000,
+                    0
+                );
+                this.physics.add.existing(door, true);
+                this.physics.add.overlap(this.player, door, () => {
+                    this.scene.start(obj.name === 'doorL' ? 'HouseL' : 'HouseR');
+                });
+            }
+        });
+
+        this.physics.add.collider(this.player, walls);
     }
 
     update ()

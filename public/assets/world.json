@@ -9,51 +9,6 @@
          "objects":[
                 {
                  "height":0,
-                 "id":1,
-                 "name":"wallL",
-                 "opacity":1,
-                 "polygon":[
-                        {
-                         "x":0,
-                         "y":0
-                        }, 
-                        {
-                         "x":0,
-                         "y":66.75
-                        }, 
-                        {
-                         "x":25.25,
-                         "y":67
-                        }, 
-                        {
-                         "x":25.25,
-                         "y":48.25
-                        }, 
-                        {
-                         "x":42.5,
-                         "y":48.5
-                        }, 
-                        {
-                         "x":42.75,
-                         "y":67
-                        }, 
-                        {
-                         "x":67.5,
-                         "y":67
-                        }, 
-                        {
-                         "x":68,
-                         "y":-1
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":69.75,
-                 "y":190
-                }, 
-                {
-                 "height":0,
                  "id":5,
                  "name":"",
                  "opacity":1,
@@ -77,55 +32,6 @@
                  "y":241.5
                 }, 
                 {
-                 "height":0,
-                 "id":7,
-                 "name":"wallR",
-                 "opacity":1,
-                 "polygon":[
-                        {
-                         "x":0,
-                         "y":0
-                        }, 
-                        {
-                         "x":-33.5,
-                         "y":17.5
-                        }, 
-                        {
-                         "x":-33,
-                         "y":87.25
-                        }, 
-                        {
-                         "x":-7.25,
-                         "y":87.25
-                        }, 
-                        {
-                         "x":-7.75,
-                         "y":68.75
-                        }, 
-                        {
-                         "x":8.75,
-                         "y":68.5
-                        }, 
-                        {
-                         "x":8.5,
-                         "y":87
-                        }, 
-                        {
-                         "x":33.75,
-                         "y":86.75
-                        }, 
-                        {
-                         "x":33.75,
-                         "y":16
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":359,
-                 "y":170.25
-                }, 
-                {
                  "height":13.5,
                  "id":8,
                  "name":"doorR",
@@ -136,6 +42,54 @@
                  "width":15.25,
                  "x":352.5,
                  "y":241.75
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":116.5,
+                 "y":213
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":123,
+                 "y":201.5
+                }, 
+                {
+                 "height":63.5,
+                 "id":11,
+                 "name":"wallL",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":72,
+                 "y":192.5
+                }, 
+                {
+                 "height":81.5,
+                 "id":12,
+                 "name":"wallR",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":68,
+                 "x":325,
+                 "y":174
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -296,7 +250,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":9,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.12.2",
