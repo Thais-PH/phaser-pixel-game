@@ -1,9 +1,9 @@
-import { Scene, GameObjects, Types } from 'phaser';
+import * as Phaser from 'phaser';
 
-export class Exterior extends Scene
+export class Exterior extends Phaser.Scene
 {
-    private player!: GameObjects.Rectangle;
-    private cursors!: Types.Input.Keyboard.CursorKeys;
+    private player!: Phaser.GameObjects.Rectangle;
+    private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
     private speed: number = 150;
 
     constructor ()
@@ -13,46 +13,33 @@ export class Exterior extends Scene
 
     preload ()
     {
+        this.load.setPath('assets');
+        this.load.tilemapTiledJSON('world', 'world.json');
+        this.load.image('exterior', 'Set_1_0.png');
+        this.load.image('house', 'House_Tileset.png');
     }
 
     create ()
     {
-        // Joueur : un rectangle blanc au centre
-        this.player = this.add.rectangle(240, 216, 16, 16, 0xffffff);
+        const map = this.make.tilemap({ key: 'world' });
+        const exteriorTiles = map.addTilesetImage('exterior', 'exterior');
+        const houseTiles = map.addTilesetImage('house', 'house');
+        const tilesets = [exteriorTiles!, houseTiles!];
+
+        map.createLayer('ground', tilesets);
+        map.createLayer('ground objects', tilesets);
+        map.createLayer('house', tilesets);
+        map.createLayer('windows/doors', tilesets);
+
+        this.player = this.add.rectangle(240, 300, 16, 16, 0xffffff);
         this.physics.add.existing(this.player);
 
-        // Touches directionnelles
         this.cursors = this.input.keyboard!.createCursorKeys();
-
-        // Maison Gauche
-        const houseL = this.add.rectangle(100, 216, 80, 80, 0xd040000);
-        this.physics.add.existing(houseL, true);
-        this.physics.add.collider(this.player, houseL);
-
-        //Maison Droite
-        const houseR = this.add.rectangle(380, 216, 80, 80, 0x0040d0);
-        this.physics.add.existing(houseR, true);
-        this.physics.add.collider(this.player, houseR);
-
-        //Zone de transition maison gauche (devant la porte)
-        const doorL = this.add.rectangle(100, 260, 20, 10, 0xffff00);
-        this.physics.add.existing(doorL, true);
-        this.physics.add.overlap(this.player, doorL, () => {
-            this.scene.start('HouseL');
-        });
-
-        //Zone de transition maison droite (devant la porte)
-        const doorR = this.add.rectangle(380, 260, 20, 10, 0xffff00);
-        this.physics.add.existing(doorR, true);
-        this.physics.add.overlap(this.player, doorR, () => {
-            this.scene.start('HouseR');
-        });
     }
 
     update ()
     {
         const body = this.player.body as Phaser.Physics.Arcade.Body;
-
         body.setVelocity(0);
 
         if (this.cursors.left.isDown) body.setVelocityX(-this.speed);
