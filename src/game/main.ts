@@ -1,3 +1,4 @@
+import { TitleScreen } from './scenes/TitleScreen';
 import { Exterior } from './scenes/Exterior';
 import { HouseL } from './scenes/HouseL';
 import { HouseR } from './scenes/HouseR';
@@ -17,6 +18,7 @@ const config: Types.Core.GameConfig = {
         autoCenter: Scale.CENTER_BOTH
     },
     scene: [
+        TitleScreen,
         Exterior,
         HouseL,
         HouseR,
