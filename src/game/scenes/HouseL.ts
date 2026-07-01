@@ -50,6 +50,7 @@ export class HouseL extends Phaser.Scene
         this.cameras.main.centerOn(map.widthInPixels / 2, map.heightInPixels / 2);
 
         this.player = this.physics.add.sprite(map.widthInPixels / 2, map.heightInPixels - 40, 'player', 54);
+        this.player.setFrame(90);
 
         this.cursors = this.input.keyboard!.createCursorKeys();
 
@@ -66,7 +67,7 @@ export class HouseL extends Phaser.Scene
                 );
                 this.physics.add.existing(exit, true);
                 this.physics.add.overlap(this.player, exit, () => {
-                    this.scene.start('Exterior');
+                    this.scene.start('Exterior', { fromHouse: 'HouseL' });
                 });
             } else if (obj.name !== 'wallpaper') {
                 // "wallpaper" est purement décoratif, on ne le bloque pas

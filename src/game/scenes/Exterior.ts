@@ -23,83 +23,95 @@ export class Exterior extends Phaser.Scene
         });
     }
 
-    create ()
-    {
-        const map = this.make.tilemap({ key: 'world' });
-        const exteriorTiles = map.addTilesetImage('exterior', 'exterior');
-        const houseTiles = map.addTilesetImage('house', 'house');
-        const tilesets = [exteriorTiles!, houseTiles!];
+    create (data?: { fromHouse?: string})
+{
+    const map = this.make.tilemap({ key: 'world' });
+    const exteriorTiles = map.addTilesetImage('exterior', 'exterior');
+    const houseTiles = map.addTilesetImage('house', 'house');
+    const tilesets = [exteriorTiles!, houseTiles!];
 
-        map.createLayer('ground', tilesets);
-        map.createLayer('ground objects', tilesets);
-        map.createLayer('house', tilesets);
-        map.createLayer('windows/doors', tilesets);
+    map.createLayer('ground', tilesets);
+    map.createLayer('ground objects', tilesets);
+    map.createLayer('house', tilesets);
+    map.createLayer('windows/doors', tilesets);
 
-       this.player = this.physics.add.sprite(240, 300, 'player', 54);
+    // Position de spawn selon d'où on vient
+    let spawnX = 240;
+    let spawnY = 300;
 
-       this.anims.create({
+    if (data?.fromHouse === 'HouseL') {
+        spawnX = 136;
+        spawnY = 127;
+    } else if (data?.fromHouse === 'HouseR') {
+        spawnX = 360;
+        spawnY = 271;
+    }
+
+    // Une seule création du joueur
+    this.player = this.physics.add.sprite(spawnX, spawnY, 'player', 54);
+
+    this.anims.create({
         key: 'walk-down',
         frames: this.anims.generateFrameNumbers('player', { frames: [54, 55, 56] }),
-        frameRate:8,
+        frameRate: 8,
         repeat: -1
-       });
-       this.anims.create({
+    });
+    this.anims.create({
         key: 'walk-left',
         frames: this.anims.generateFrameNumbers('player', { frames: [66, 67, 68] }),
         frameRate: 8,
         repeat: -1
-       });
-       this.anims.create({
+    });
+    this.anims.create({
         key: 'walk-right',
-        frames: this.anims.generateFrameNumbers('player', {frames: [78, 79, 80] }),
+        frames: this.anims.generateFrameNumbers('player', { frames: [78, 79, 80] }),
         frameRate: 8,
         repeat: -1
-       });
-       this.anims.create({
+    });
+    this.anims.create({
         key: 'walk-up',
         frames: this.anims.generateFrameNumbers('player', { frames: [90, 91, 92] }),
         frameRate: 8,
         repeat: -1
-       });
+    });
 
-        this.cursors = this.input.keyboard!.createCursorKeys();
+    this.cursors = this.input.keyboard!.createCursorKeys();
 
-        const collisionLayer = map.getObjectLayer('collisions');
+    const collisionLayer = map.getObjectLayer('collisions');
+    const walls = this.physics.add.staticGroup();
 
-        const walls = this.physics.add.staticGroup();
+    collisionLayer?.objects.forEach(obj => {
+        if (obj.name === 'wallL' || obj.name === 'wallR') {
+            const wall = this.add.rectangle(
+                obj.x! + obj.width! / 2,
+                obj.y! + obj.height! / 2,
+                obj.width!,
+                obj.height!,
+                0x000000,
+                0
+            );
+            this.physics.add.existing(wall, true);
+            walls.add(wall);
+        }
 
-        collisionLayer?.objects.forEach(obj => {
-            if (obj.name === 'wallL' || obj.name === 'wallR') {
-                const wall = this.add.rectangle(
-                    obj.x! + obj.width! / 2,
-                    obj.y! + obj.height! / 2,
-                    obj.width!,
-                    obj.height!,
-                    0x000000,
-                    0
-                );
-                this.physics.add.existing(wall, true);
-                walls.add(wall);
-            }
+        if (obj.name === 'doorL' || obj.name === 'doorR') {
+            const door = this.add.rectangle(
+                obj.x! + obj.width! / 2,
+                obj.y! + obj.height! / 2,
+                obj.width!,
+                obj.height!,
+                0x000000,
+                0
+            );
+            this.physics.add.existing(door, true);
+            this.physics.add.overlap(this.player, door, () => {
+                this.scene.start(obj.name === 'doorL' ? 'HouseL' : 'HouseR');
+            });
+        }
+    });
 
-            if (obj.name === 'doorL' || obj.name === 'doorR') {
-                const door = this.add.rectangle(
-                    obj.x! + obj.width! / 2,
-                    obj.y! + obj.height! / 2 ,
-                    obj.width!,
-                    obj.height!,
-                    0x000000,
-                    0
-                );
-                this.physics.add.existing(door, true);
-                this.physics.add.overlap(this.player, door, () => {
-                    this.scene.start(obj.name === 'doorL' ? 'HouseL' : 'HouseR');
-                });
-            }
-        });
-
-        this.physics.add.collider(this.player, walls);
-    }
+    this.physics.add.collider(this.player, walls);
+}
 
     update ()
     {

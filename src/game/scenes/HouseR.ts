@@ -50,12 +50,8 @@ export class HouseR extends Phaser.Scene
         this.cameras.main.setZoom(2);
         this.cameras.main.centerOn(map.widthInPixels / 2, map.heightInPixels / 2);
 
-        this.player = this.physics.add.sprite(
-            map.widthInPixels / 2,
-            map.heightInPixels - 40,
-            'player',
-            54
-        );
+        this.player = this.physics.add.sprite(map.widthInPixels / 2, map.heightInPixels - 40, 'player', 54);
+        this.player.setFrame(90);
 
         this.cursors = this.input.keyboard!.createCursorKeys();
 
@@ -72,7 +68,7 @@ export class HouseR extends Phaser.Scene
                 );
                 this.physics.add.existing(exit, true);
                 this.physics.add.overlap(this.player, exit, () => {
-                    this.scene.start('Exterior');
+                    this.scene.start('Exterior', { fromHouse: 'HouseR' });
                 });
             } else if (obj.name !== 'wallpaper') {
                 const wall = this.add.zone(
