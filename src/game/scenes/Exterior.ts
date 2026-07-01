@@ -24,7 +24,7 @@ export class Exterior extends Phaser.Scene
     }
 
     create (data?: { fromHouse?: string})
-{
+    {
     const map = this.make.tilemap({ key: 'world' });
     const exteriorTiles = map.addTilesetImage('exterior', 'exterior');
     const houseTiles = map.addTilesetImage('house', 'house');
@@ -47,9 +47,16 @@ export class Exterior extends Phaser.Scene
         spawnY = 271;
     }
 
-    // Une seule création du joueur
+    // création du joueur
     this.player = this.physics.add.sprite(spawnX, spawnY, 'player', 54);
 
+    // Réduit le corps de collision aux pieds du personnage
+    // largeur x hauteur du corps
+    this.player.body.setSize(10, 8);
+    // décalage depuis le coin haut-gauche du sprite
+    this.player.body.setOffset(4, 18);
+
+    // Marche
     this.anims.create({
         key: 'walk-down',
         frames: this.anims.generateFrameNumbers('player', { frames: [54, 55, 56] }),
@@ -77,6 +84,7 @@ export class Exterior extends Phaser.Scene
 
     this.cursors = this.input.keyboard!.createCursorKeys();
 
+    // collisions avec les maisons
     const collisionLayer = map.getObjectLayer('collisions');
     const walls = this.physics.add.staticGroup();
 
@@ -94,6 +102,7 @@ export class Exterior extends Phaser.Scene
             walls.add(wall);
         }
 
+        // collision avec les portes
         if (obj.name === 'doorL' || obj.name === 'doorR') {
             const door = this.add.rectangle(
                 obj.x! + obj.width! / 2,
@@ -111,7 +120,7 @@ export class Exterior extends Phaser.Scene
     });
 
     this.physics.add.collider(this.player, walls);
-}
+    }
 
     update ()
     {

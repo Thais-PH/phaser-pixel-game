@@ -31,7 +31,7 @@
          "name":"collisions",
          "objects":[
                 {
-                 "height":31.3333333333333,
+                 "height":31.3333,
                  "id":1,
                  "name":"sofa",
                  "opacity":1,
@@ -39,32 +39,32 @@
                  "type":"",
                  "visible":true,
                  "width":47,
-                 "x":48.6666666666667,
-                 "y":144.333333333333
+                 "x":48.6667,
+                 "y":144.333
                 }, 
                 {
-                 "height":45.3333333333333,
+                 "height":45.3333,
                  "id":2,
                  "name":"library",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":39.3333333333333,
-                 "x":116.666666666667,
-                 "y":33.6666666666667
+                 "width":39.3333,
+                 "x":116.667,
+                 "y":33.6667
                 }, 
                 {
-                 "height":34.6666666666667,
+                 "height":34.6667,
                  "id":3,
                  "name":"armchair",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":27.3333333333333,
-                 "x":17.6666666666667,
-                 "y":107.333333333333
+                 "width":27.3333,
+                 "x":17.6667,
+                 "y":107.333
                 }, 
                 {
                  "height":24,
@@ -74,33 +74,33 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":31.3333333333333,
-                 "x":64.3333333333333,
+                 "width":31.3333,
+                 "x":64.3333,
                  "y":118
                 }, 
                 {
-                 "height":51.3333333333333,
+                 "height":51.3333,
                  "id":7,
                  "name":"plant",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":15.3333333333333,
-                 "x":24.6666666666667,
-                 "y":123.666666666667
+                 "width":15.3333,
+                 "x":24.6667,
+                 "y":123.667
                 }, 
                 {
-                 "height":38.6666666666667,
+                 "height":33.3333666666667,
                  "id":8,
                  "name":"desk",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":45.3333333333333,
+                 "width":45.3333,
                  "x":161,
-                 "y":56.3333333333333
+                 "y":56.3333
                 }, 
                 {
                  "height":23,
@@ -110,8 +110,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":17.3333333333333,
-                 "x":183.333333333333,
+                 "width":17.3333,
+                 "x":183.333,
                  "y":82
                 }, 
                 {
@@ -123,8 +123,8 @@
                  "type":"",
                  "visible":true,
                  "width":15,
-                 "x":176.666666666667,
-                 "y":52.6666666666667
+                 "x":176.667,
+                 "y":52.6667
                 }, 
                 {
                  "height":13,
@@ -136,22 +136,22 @@
                  "visible":true,
                  "width":14,
                  "x":161,
-                 "y":52.6666666666667
+                 "y":52.6667
                 }, 
                 {
-                 "height":174.666666666667,
+                 "height":174.667,
                  "id":12,
                  "name":"wallRight",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":2.33333333333334,
-                 "x":209.666666666667,
-                 "y":8.33333333333333
+                 "width":2.33333,
+                 "x":209.667,
+                 "y":8.33333
                 }, 
                 {
-                 "height":175.333333333333,
+                 "height":175.333,
                  "id":13,
                  "name":"wallLeft",
                  "opacity":1,
@@ -159,23 +159,23 @@
                  "type":"",
                  "visible":true,
                  "width":3,
-                 "x":11.3333333333333,
+                 "x":11.3333,
                  "y":8
                 }, 
                 {
-                 "height":4.66666666666667,
+                 "height":4.66667,
                  "id":14,
                  "name":"wallTop",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":201.333333333333,
+                 "width":201.333,
                  "x":11,
-                 "y":7.33333333333333
+                 "y":7.33333
                 }, 
                 {
-                 "height":3.66666666666666,
+                 "height":3.66667,
                  "id":15,
                  "name":"exit",
                  "opacity":1,
@@ -187,41 +187,41 @@
                  "y":180
                 }, 
                 {
-                 "height":2.66666666666669,
+                 "height":2.66667,
                  "id":17,
                  "name":"wallBottomL",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":84.3333333333333,
-                 "x":11.3333333333333,
-                 "y":180.333333333333
+                 "width":84.3333,
+                 "x":11.3333,
+                 "y":180.333
                 },
             
                 {
-                 "height":3.66666666666666,
+                 "height":3.66667,
                  "id":18,
                  "name":"wallBottomR",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":84.3333333333333,
-                 "x":128.333333333333,
+                 "width":84.3333,
+                 "x":128.333,
                  "y":180
                 }, 
                 {
-                 "height":46,
+                 "height":58.6666666666667,
                  "id":19,
                  "name":"wallpaper",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":195,
-                 "x":14.6666666666667,
-                 "y":11
+                 "width":193.666666666667,
+                 "x":15.3333666666667,
+                 "y":13
                 }],
          "opacity":1,
          "type":"objectgroup",

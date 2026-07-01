@@ -15,7 +15,6 @@ export class HouseR extends Phaser.Scene
     {
         this.load.setPath('assets');
         this.load.tilemapTiledJSON('houseR', 'houseR.json');
-
         this.load.image('houseGround', 'Set_1_0.png');
         this.load.image('foundationSet', 'CabinInside.png');
         this.load.image('furnituresR1Set', 'makeshift_furnitureset.png');
@@ -30,12 +29,10 @@ export class HouseR extends Phaser.Scene
     create ()
     {
         const map = this.make.tilemap({ key: 'houseR' });
-
         const groundTiles = map.addTilesetImage('ground', 'houseGround');
         const foundationTiles = map.addTilesetImage('foundation', 'foundationSet');
         const furnituresR1Tiles = map.addTilesetImage('furnituresR1', 'furnituresR1Set');
         const furnituresR2Tiles = map.addTilesetImage('furnituresR2', 'furnituresR2Set');
-
         const tilesets = [groundTiles!, foundationTiles!, furnituresR1Tiles!, furnituresR2Tiles!];
 
         map.createLayer('ground', tilesets);
@@ -52,6 +49,12 @@ export class HouseR extends Phaser.Scene
 
         this.player = this.physics.add.sprite(map.widthInPixels / 2, map.heightInPixels - 40, 'player', 54);
         this.player.setFrame(90);
+
+        // Réduit le corps de collision aux pieds du personnage
+        // largeur x hauteur du corps
+        this.player.body.setSize(10, 8); 
+        // décalage depuis le coin haut-gauche du sprite       
+        this.player.body.setOffset(4, 18);     
 
         this.cursors = this.input.keyboard!.createCursorKeys();
 
@@ -70,7 +73,7 @@ export class HouseR extends Phaser.Scene
                 this.physics.add.overlap(this.player, exit, () => {
                     this.scene.start('Exterior', { fromHouse: 'HouseR' });
                 });
-            } else if (obj.name !== 'wallpaper') {
+            } else {
                 const wall = this.add.zone(
                     obj.x! + obj.width! / 2,
                     obj.y! + obj.height! / 2,

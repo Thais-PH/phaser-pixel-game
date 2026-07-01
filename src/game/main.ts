@@ -2,6 +2,7 @@ import { TitleScreen } from './scenes/TitleScreen';
 import { Exterior } from './scenes/Exterior';
 import { HouseL } from './scenes/HouseL';
 import { HouseR } from './scenes/HouseR';
+import { DialogueScene } from './scenes/DialogueScene';
 import { AUTO, Game, Scale,Types } from 'phaser';
 
 // Find out more information about the Game Config at:
@@ -22,10 +23,11 @@ const config: Types.Core.GameConfig = {
         Exterior,
         HouseL,
         HouseR,
+        DialogueScene
     ],
     physics: {
         default: 'arcade',
-        arcade: { debug: false }
+        arcade: { debug: true }
     },
 };
 
